@@ -54,7 +54,7 @@ functions:
           method: get
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
   add-note:
     handler: api/add-note.handler
     description: POST /note
@@ -65,7 +65,7 @@ functions:
           authorizer: aws_iam
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
   update-note:
     handler: api/update-note.handler
     description: PATCH /note
@@ -76,7 +76,7 @@ functions:
           authorizer: aws_iam
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
   get-notes:
     handler: api/get-notes.handler
     description: GET /notes
@@ -87,7 +87,7 @@ functions:
           authorizer: aws_iam
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
   get-note:
     handler: api/get-note.handler
     description: GET /note/n/{note_id}
@@ -98,7 +98,7 @@ functions:
           authorizer: aws_iam
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
   delete-note:
     handler: api/delete-note.handler
     description: Delete /note
@@ -109,7 +109,7 @@ functions:
           authorizer: aws_iam
           cors: 
             origin: '*'
-            headers: ${self:custom.allowHeaders}
+            headers: ${self:custom.allowedHeaders}
 
 
 resources:
