@@ -46,7 +46,7 @@ provider:
 
 functions:
   authenticate-google:
-    handler: authenticate-google
+    handler: api/authenticate-google.handler
     description: Google IDP Authentication
     events:
       - http:
@@ -149,8 +149,8 @@ resources:
     Type: AWS::ApiGateway::GatewayResponse 
     Properties:
       ResponseParameters:
-        gatewayresponse.header.Access-Control-Allow-Origin: '*'
-        gatewayresponse.header.Access-Control-Allow-Headers: '*'
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
       ResponseType: DEFAULT_4XX
       RestApiId:
         Ref: 'ApiGatewayRestApi'

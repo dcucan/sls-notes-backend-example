@@ -1,19 +1,20 @@
 /**
- * Route GET /auth
+ * Route: GET /auth
  */
 
 const AWS = require('aws-sdk');
-AWS.config.update({region: 'eu-west-1'});
+AWS.config.update({ region: 'us-west-2' });
 
-const jwtDecode = require('jwt-decode')
+const jwtDecode = require('jwt-decode');
 const util = require('./util.js');
 
 const cognitoidentity = new AWS.CognitoIdentity();
 const identityPoolId = process.env.COGNITO_IDENTITY_POOL_ID;
 
-exports.handler = async(event) => {
-    try{
+exports.handler = async (event) => {
+    try {
         let id_token = util.getIdToken(event.headers);
+
         let params = {
             IdentityPoolId: identityPoolId,
             Logins: {
@@ -38,16 +39,16 @@ exports.handler = async(event) => {
             statusCode: 200,
             headers: util.getResponseHeaders(),
             body: JSON.stringify(data)
-        }
-    } catch (err){
-        console.log("Error",err);
-        return{
+        };
+    } catch (err) {
+        console.log("Error", err);
+        return {
             statusCode: err.statusCode ? err.statusCode : 500,
             headers: util.getResponseHeaders(),
             body: JSON.stringify({
                 error: err.name ? err.name : "Exception",
-                message : err.message ? err.message : "Unknown error"
+                message: err.message ? err.message : "Unknown error"
             })
-        }
+        };
     }
 }
