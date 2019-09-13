@@ -3,7 +3,7 @@
  */
 
 const AWS = require('aws-sdk');
-AWS.config.update({ region: 'us-west-2' });
+AWS.config.update({ region: 'eu-west-1' });
 
 const jwtDecode = require('jwt-decode');
 const util = require('./util.js');
